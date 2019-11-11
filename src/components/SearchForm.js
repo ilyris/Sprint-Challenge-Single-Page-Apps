@@ -7,10 +7,16 @@ export default function SearchForm(props) {
     event.preventDefault();
   }
   return (
-      <StyledForm onSubmit={onSubmitHandler}>
-        <StyledInput onChange={props.handleFilterSearch}type="text" placeholder="filter characters" />
-        <Styledbutton type='submit'>Filter Characters</Styledbutton>
-      </StyledForm>
+    <StyledForm onSubmit={onSubmitHandler}>
+      <StyledInput
+        onChange={props.handleFilterSearch}
+        value={props.searchfield}
+        name="searchfield"
+        type="text"
+        placeholder="filter characters"
+      />
+      <Styledbutton type='submit'>Filter Characters</Styledbutton>
+    </StyledForm>
   );
 }
 const StyledForm = S.form`

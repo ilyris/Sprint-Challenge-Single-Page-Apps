@@ -11,9 +11,7 @@ export default function CharacterList() {
   });
 
 
-  const handleFilterSearch = (eveny) => {
-    
-  }
+
   useEffect(() => {
     const getRickAndMortyCharacters = () => {
       axios.get(`https://rickandmortyapi.com/api/character/`)
@@ -26,9 +24,18 @@ export default function CharacterList() {
       getRickAndMortyCharacters();
 
   }, []);
+  const handleFilterSearch = (event) => {
+        setState({
+          ...state, 
+          characters: state.characters.filter( character => character.name.toLowerCase().includes(event.target.value.toLowerCase())),
+          [event.target.name]: event.target.value
+        });
+        
+  }
+  console.log(state);
   return (
     <CharacterListContainer>
-      <SeachForm handleFilterSearch={handleFilterSearch}/>
+      <SeachForm handleFilterSearch={handleFilterSearch} searchfield={state.searchfield}/>
       {state.characters.map((character, index) => {
         return (
           <CharacterCard
