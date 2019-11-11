@@ -21,13 +21,14 @@ export default function CharacterList() {
         })
         .catch(error => console.log(error));
     }
+    if(state.searchfield === "") {
       getRickAndMortyCharacters();
-
+    }
   }, []);
   const handleFilterSearch = (event) => {
         setState({
           ...state, 
-          characters: state.characters.filter( character => character.name.toLowerCase().includes(event.target.value.toLowerCase())),
+          characters: state.characters.filter( character => character.name.toLowerCase().includes(event.target.value)),
           [event.target.name]: event.target.value
         });
         
